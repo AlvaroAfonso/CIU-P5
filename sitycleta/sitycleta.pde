@@ -1,3 +1,6 @@
+//import gifAnimation.*;
+
+
 import java.util.Iterator;
 import java.util.Map.Entry;
 
@@ -30,6 +33,9 @@ boolean mapaOption = false;
 
 //posicion de la estacion en pantalla
 int actual = 0;
+
+//GifMaker gifExport;
+
 
 void setup() {
   size(1000, 800, P3D);
@@ -105,15 +111,14 @@ void setup() {
       }
     }
     
-    //println(coordenadas.getKey(), coordenadas.values());
     
-   /*it = coordenadas.entrySet().iterator();
+   it = coordenadas.entrySet().iterator();
     
     while(it.hasNext()){
       Entry<String, PVector> value = it.next();
       println(value.getKey() + "------" + coordenadas.get(value.getKey()));
     }
-    */
+    
 }
 
 void draw() {
@@ -137,6 +142,8 @@ void draw() {
   pg.endDraw();
   image(pg, width/2 - pg.width/2, height/2 - pg.height/2);
   
+  
+  
   if(mapaOption){
 
     textureMode(NORMAL);
@@ -152,37 +159,38 @@ void draw() {
     
     if(change){
       //coordenadas de prueba por si las coordinadas reales no estan en el xml
-      latOrigen = random(100);
-      lonDest = random(100);
-      lonOrigen = random(100);
-      latDest = random(100);
+      latOrigen = random(height);
+      lonDest = random(width);
+      lonOrigen = random(width);
+      latDest = random(height);
       change = false;
     }
     
     if(coordenadas.containsKey(rental[actual])){
+        println(rental[actual]  + " Origen");
+
       random = false;
-      latOrigen = coordenadas.get(rental[actual]).y;                //MOSTRAR LINEAS EN EL MAPA
-      lonOrigen = coordenadas.get(rental[actual]).x;
+      latOrigen = map(coordenadas.get(rental[actual]).y, maxLat, minLat, 0, height);                //MOSTRAR LINEAS EN EL MAPA
+      lonOrigen = map(coordenadas.get(rental[actual]).x, minLon, maxLon, 0, width);
     }
     
     if(coordenadas.containsKey(returnPlace[actual])){
+        println(returnPlace[actual] + " Destino");
+
       random = false;
-      latDest = coordenadas.get(returnPlace[actual]).y;                //MOSTRAR LINEAS EN EL MAPA
-      lonDest = coordenadas.get(returnPlace[actual]).x;
+      latDest = map(coordenadas.get(returnPlace[actual]).y, maxLat, minLat, 0, height);                //MOSTRAR LINEAS EN EL MAPA
+      lonDest = map(coordenadas.get(returnPlace[actual]).x, minLon, maxLon, 0, width);
     }
-    
-    latOrigen = map(latOrigen, maxLat, minLat, 0, height);
-    lonOrigen = map(lonOrigen, minLon, maxLon, 0, width);
-    latDest = map(latDest, maxLat, minLat, 0, height);
-    lonDest = map(lonDest, minLon, maxLon, 0, width);
-    
-    println();
-    println(minLat, maxLat, minLon, maxLon);
-    print("\n\nLatOrigen " + latOrigen, "\nLonOrigen " + lonOrigen, "\nLatDest " + latDest, "\nLonDest " + lonDest);
-    println();
+   
     
     fill(0);
-    strokeWeight(5);    
+    strokeWeight(5);
+    textSize(50);
+    if(random){
+      text("Random", 10, 60);
+    }
+    println("\n\nLatOrigen " + latOrigen, "\nLonOrigen " + lonOrigen, "\nLatDest " + latDest, "\nLonDest " + lonDest);
+
     line(lonOrigen, latOrigen, lonDest, latDest);
     
   }
