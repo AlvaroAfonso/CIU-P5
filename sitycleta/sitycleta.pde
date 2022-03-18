@@ -39,10 +39,14 @@ int actual = 0;
 
 void setup() {
   size(1000, 800, P3D);
+  
+  //gifExport = new GifMaker(this, "export.gif");
+  //gifExport.setRepeat(0);
+  
   pg = createGraphics(750, 500);
   mapa = createGraphics(width, height);
   
-  mapaPNG = loadImage("map.png");
+  mapaPNG = loadImage("map (3).png");
   
   estacionesXML = loadXML("map.xml");
   estaciones = loadTable("sitycleta2021.csv", "header");
@@ -95,7 +99,7 @@ void setup() {
         for (String coord : coordenadas.keySet()) {
           //if (coordenadas.get(coord).x != 0) continue;
           if (tag.getString("v").contains(coord)) {
-            coordenadas.put(coord, new PVector(nodo.getFloat("lat"), nodo.getFloat("lon")));
+            coordenadas.put(coord, new PVector(nodo.getFloat("lon"), nodo.getFloat("lat")));
           }
         }
       }
@@ -194,6 +198,9 @@ void draw() {
     line(lonOrigen, latOrigen, lonDest, latDest);
     
   }
+  
+    //gifExport.addFrame();
+
 }
 
 void keyReleased(){
@@ -211,4 +218,8 @@ void keyReleased(){
     actual -= 1;
     change = true;
   }
+  
+  /*if(key == 's'){
+    gifExport.finish();          // write file
+  }*/
 }
