@@ -4,7 +4,7 @@ Proyecto de "Creando interfaces de usuario", asignatura de la ULPGC (Universidad
 ### Introducción
 El objetivo de esta práctica es obtener unos datos de una zona de un mapa, y con los nombres y coordenadas ser capaz de ubicarlos en una imagen de esa misma zona.
 
-![Gif de una prueba del proyecto])
+![Gif de una prueba del proyecto] https://github.com/AlvaroAfonso/CIU-P5/blob/main/sitycleta/data/export.gif)
 
 ### Desarrollo
 Lo primero era conseguir la imagen y los datos de una zona geolóca, sacada de https://www.openstreetmap.org, que nos aportaba algunos de los nombres y coordenadas de ciertos lugares. Esos lugares sería obtenidos de un csv proporcionado por la web de sitycleta, aportándonos un seguimiento de las bicis, hora y lugar de recogida hasta hora y lugar de entrega. Con esos datos transpolariamos las coordenadas reales a lo equivalente en el contexto de la imagen del mapa.
