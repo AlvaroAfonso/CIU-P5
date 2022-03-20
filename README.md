@@ -10,7 +10,7 @@ El objetivo de esta práctica es obtener unos datos de una zona de un mapa, y co
 Lo primero era conseguir la imagen y los datos de una zona geolóca, sacada de https://www.openstreetmap.org, que nos aportaba algunos de los nombres y coordenadas de ciertos lugares. Esos lugares sería obtenidos de un csv proporcionado por la web de sitycleta, aportándonos un seguimiento de las bicis, hora y lugar de recogida hasta hora y lugar de entrega. Con esos datos transpolariamos las coordenadas reales a lo equivalente en el contexto de la imagen del mapa. Dada la inconsistencia de los datos, he puesto coordenadas aletatorias cuando no se encontraban las originales para al menos ver la funcionalidad.
 
 ### Controles
-Flechas izquierda y derecha para cambiar de alquiler de bici.
+Flechas izquierda y derecha para cambiar de alquiler de bici, ENTER para visualizarlo en el mapa.
 
 ### Dificultades
 La primera dificulad encontrada fue que en processing hace la separación de datos por comas, y el csv viene separado por defecto por punto y coma.
